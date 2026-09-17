@@ -1,5 +1,11 @@
 "use strict";
 
+import {
+  validateNumber,
+  getRandomNumber,
+  compareNumbers
+} from "./src/scripts/lottery.js"
+
 const history = [  {
     userNumber: 4,
     randomNumber: 7,
@@ -65,38 +71,12 @@ form.addEventListener("submit", function (event) {
 
 });
 
-function validateNumber(number) {
-
-  if( number < 1 || number > 10 ) {
-    return false;
-  }
-
-  if ( isNaN(number)) {
-    return false;
-  }
-
-  return true;
-
-}
-
-function getRandomNumber() {
-
-  const number = Math.ceil((Math.random() * 10));
-  
-  return number;
-
-}
 
 
-function compareNumbers(userNumber, randomNumber) {
 
-  if (userNumber === randomNumber) {
-    return true;
-  } else {
-    return false;
-  }
 
-}
+
+
 
 console.log(history)
 
