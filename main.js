@@ -7,7 +7,8 @@ import {
 } from "./src/scripts/lottery.js"
 
 import {
-  showMessage
+  showMessage,
+  clearInput
 } from "./src/scripts/lottery-iu.js"
 
 const history = [];
@@ -28,7 +29,7 @@ form.addEventListener("submit", function (event) {
   const isValid = validateNumber(userNumber);
 
   if(!isValid) {
-    showMessage("message-id", "No es válido");
+    showMessage("message-id", "El número debe estar entre 1 y 10");
   }
 
   if(isValid) {
@@ -66,11 +67,13 @@ form.addEventListener("submit", function (event) {
 
     history.push(newTry);
 
-    // Show History (to be implemented): showHistory(newTry)
+    // Show History (to be implemented): showHistory()
 
     console.log(history)
 
   }
+
+   clearInput(input);
   
 
 });
@@ -79,28 +82,24 @@ form.addEventListener("submit", function (event) {
 
 
 
-
-
-
-console.log(history)
+/*
 
 // showHistory() to be implemented;
 
-/*function showHistory(newTry) {
+function showHistory(history) {
 
-const ul = document.querySelector("#history-id");
-const li = document.createElement("li");
+const historyToShow = Object.entries(history.[0])
 
-li.textContent = newTry.userNumber;
-  ul.appendChild(li);
-       
+console.log(historyToShow); 
+
 }
-
 
 let x = showHistory(history);
 console.log("Lo que debería mostrar:", x)
-
 */
+
+
+
 
 
 
