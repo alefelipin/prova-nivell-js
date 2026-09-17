@@ -1,0 +1,27 @@
+{
+  "name": "prova",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alefelipin/prova-nivell-js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/alefelipin/prova-nivell-js/issues"
+  },
+  "homepage": "https://github.com/alefelipin/prova-nivell-js#readme",
+  "devDependencies": {
+    "vitest": "^5.0.1"
+  }
+}
