@@ -9,18 +9,24 @@ form.addEventListener("submit", function (event) {
 
   event.preventDefault();
 
-  const userInput = parseInt(input.value);
+  const userNumber = parseInt(input.value);
 
-  // Validación
+  // Validation
 
-  const isValid = validateNumber(userInput);
+  const isValid = validateNumber(userNumber);
 
   if(!isValid) {
     document.querySelector("#message-id").innerText = "No es válido";
   }
 
   if(isValid) {
-    console.log("es válido")
+    
+    // A random number is generated
+
+    const randomNumber = getRandomNumber();
+
+    console.log(randomNumber)
+
   }
   
 
@@ -39,4 +45,17 @@ function validateNumber(number) {
   return true;
 
 }
+
+function getRandomNumber() {
+
+  const number = Math.ceil((Math.random() * 10));
+  
+  return number;
+
+}
+
+
+
+
+
 
