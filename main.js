@@ -12,10 +12,7 @@ import {
 } from "./src/scripts/lottery-iu.js"
 
 const history = [];
-
-
 const input = document.querySelector("#input-id");
-
 const form = document.querySelector("#form-id");
 
 form.addEventListener("submit", function (event) {
@@ -24,79 +21,46 @@ form.addEventListener("submit", function (event) {
 
   const userNumber = parseInt(input.value);
 
-  // Validation
-
+// Validation
   const isValid = validateNumber(userNumber);
 
   if(!isValid) {
     showMessage("message-id", "El número debe estar entre 1 y 10");
   }
 
-  if(isValid) {
-    
-    // A random number is generated
-
+  if(isValid) { 
     const randomNumber = getRandomNumber();
 
+// Comparison between numbers
 
-    // Comparison
+  const isEqual = compareNumbers(userNumber, randomNumber);
+  let result = "";
+  if (isEqual) {
+    result = "Ganaste";
+  } else {
+    result = "Perdiste";
+  }
+  showMessage("result-id", `${result}`);
+  showMessage("message-id", `El número aleatorio generado fue: ${randomNumber}`)
+  // Adding the try
+  
+  const newTry = {
+    userNumber,
+    randomNumber,
+    result
+  }
 
-    const isEqual = compareNumbers(userNumber, randomNumber);
+  history.push(newTry);
 
-    let result = "";
-
-    if (isEqual) {
-      result = "Ganaste";
-      
-    
-
-    } else {
-      result = "Perdiste";
-    }
-
-    showMessage("result-id", `${result}`);
-    showMessage("message-id", `El número aleatorio generado fue: ${randomNumber}`)
-
-    // Add the try
-    
-    const newTry = {
-      userNumber,
-      randomNumber,
-      result
-    }
-
-    history.push(newTry);
-
-    // Show History (to be implemented): showHistory()
-
-    console.log(history)
-
+  /* function showHistory(): History has values and keys and it's not possible to be treated like an string. 
+    Anyway, it's possible to see it by console
+  */
   }
 
    clearInput(input);
-  
-
 });
 
 
-
-
-
-/*
-
-// showHistory() to be implemented;
-
-function showHistory(history) {
-
-const historyToShow = Object.entries(history.[0])
-
-console.log(historyToShow); 
-
-}
-
-let x = showHistory(history);
-console.log("Lo que debería mostrar:", x)
-*/
 
 
 
