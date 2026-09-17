@@ -6,11 +6,11 @@ import {
   compareNumbers
 } from "./src/scripts/lottery.js"
 
-const history = [  {
-    userNumber: 4,
-    randomNumber: 7,
-    result: "Perdiste"
-  }];
+import {
+  showMessage
+} from "./src/scripts/lottery-iu.js"
+
+const history = [];
 
 
 const input = document.querySelector("#input-id");
@@ -28,7 +28,7 @@ form.addEventListener("submit", function (event) {
   const isValid = validateNumber(userNumber);
 
   if(!isValid) {
-    document.querySelector("#message-id").innerText = "No es válido";
+    showMessage("message-id", "No es válido");
   }
 
   if(isValid) {
@@ -37,7 +37,6 @@ form.addEventListener("submit", function (event) {
 
     const randomNumber = getRandomNumber();
 
-    console.log(randomNumber);
 
     // Comparison
 
@@ -46,25 +45,30 @@ form.addEventListener("submit", function (event) {
     let result = "";
 
     if (isEqual) {
-      result = "Ganaste"
-      document.querySelector("#result-id").innerText = `${result}`;
-      document.querySelector("#message-id").innerText = `El número aleatorio generado fue: ${randomNumber}`;
-    // Add the successful try
-      const newTry = {
-        userNumber,
-        randomNumber,
-        result
-      }
+      result = "Ganaste";
+      
+    
 
-      history.push(newTry);
+    } else {
+      result = "Perdiste";
+    }
+
+    showMessage("result-id", `${result}`);
+    showMessage("message-id", `El número aleatorio generado fue: ${randomNumber}`)
+
+    // Add the try
+    
+    const newTry = {
+      userNumber,
+      randomNumber,
+      result
+    }
+
+    history.push(newTry);
 
     // Show History (to be implemented): showHistory(newTry)
 
-    } else {
-      result = "Perdiste"
-      document.querySelector("#result-id").innerText = `${result}`;
-      document.querySelector("#message-id").innerText = `El número aleatorio generado fue: ${randomNumber}`;
-    }
+    console.log(history)
 
   }
   
