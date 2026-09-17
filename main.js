@@ -55,6 +55,17 @@ function getRandomNumber() {
 }
 
 
+function compareNumbers(userNumber, randomNumber) {
+
+  if (userNumber === randomNumber) {
+    return true;
+  } else {
+    return false;
+  }
+
+}
+
+
 
 
 
